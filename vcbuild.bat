@@ -52,6 +52,7 @@ set GYP_MSVS_VERSION=2017
 echo Using Visual Studio 2017
 goto select-target
 
+:vc-set-2015
 @rem Look for Visual Studio 2015
 if not defined VS140COMNTOOLS goto vc-set-2013
 if not exist "%VS140COMNTOOLS%\..\..\vc\vcvarsall.bat" goto vc-set-2013
