@@ -44,6 +44,14 @@ goto next-arg
 if defined WindowsSDKDir goto select-target
 if defined VCINSTALLDIR goto select-target
 
+@rem Look for Visual Studio 2017
+if not defined VS150COMNTOOLS goto vc-set-2015
+if not exist "%VS150COMNTOOLS%\..\..\vc\vcvarsall.bat" goto vc-set-2015
+call "%VS150COMNTOOLS%\..\..\vc\vcvarsall.bat" %vs_toolset%
+set GYP_MSVS_VERSION=2017
+echo Using Visual Studio 2017
+goto select-target
+
 @rem Look for Visual Studio 2015
 if not defined VS140COMNTOOLS goto vc-set-2013
 if not exist "%VS140COMNTOOLS%\..\..\vc\vcvarsall.bat" goto vc-set-2013
